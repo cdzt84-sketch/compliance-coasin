@@ -1,1 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ControlDoc - Validación de Documento</title>
 
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#f5f5f5;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#111827;
+}
+
+.header{
+    height:82px;
+    background:#272727;
+    display:flex;
+    align-items:center;
+    padding:0 42px;
+    color:white;
+}
+
+.logo-box{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-icon{
+    width:34px;
+    height:30px;
+    border-radius:5px;
+    background:linear-gradient(135deg,#24c7ef,#7a4df3);
+    position:relative;
+}
+
+.logo-icon::before{
+    content:"";
+    position:absolute;
+    left:7px;
+    top:-7px;
+    width:18px;
+    height:16px;
+    background:#e8f7ff;
+    border-radius:3px;
+    box-shadow:4px 4px 0 rgba(255,255,255,.65);
+}
+
+.logo-text{
+    font-size:22px;
+    letter-spacing:7px;
+    font-weight:400;
+}
+
+.page{
+    max-width:1220px;
+    margin:56px auto;
+    display:grid;
+    grid-template-columns:390px 1fr;
+    gap:24px;
+    padding:0 18px;
+}
+
+.card{
+    background:#fff;
+    border-radius:9px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+    overflow:hidden;
+}
+
+.card-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    font-size:22px;
+    font-weight:700;
+    padding:18px 18px;
+    border-bottom:1px solid #dcdcdc;
+}
+
+.card-title-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.icon-title{
+    font-size:20px;
+}
+
+.chevron{
+    font-size:22px;
+    font-weight:700;
+}
+
+.info-block{
+    padding:16px 18px;
+    border-bottom:1px solid #e0e0e0;
+}
+
+.info-block:last-child{
+    border-bottom:none;
+}
+
+.info-label{
+    font-weight:700;
+    font-size:16px;
+    margin-bottom:6px;
+}
+
+.info-value{
+    font-size:16px;
+    line-height:1.35;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:7px;
+    color:#25a342;
+    border:2px solid #58bd68;
+    border-radius:20px;
+    padding:2px 11px;
+    font-weight:700;
+    font-size:13px;
+}
+
+.pdf-card{
+    margin-bottom:24px;
+}
+
+.pdf-frame{
+    width:100%;
+    height:565px;
+    background:#2e2e2e;
+    border:0;
+    display:block;
+}
+
+.table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:16px;
+}
+
+.table thead th{
+    background:#f4f4f4;
+    text-align:left;
+    padding:14px 16px;
+    border-bottom:1px solid #d4d4d4;
+}
+
+.table tbody td{
+    padding:14px 16px;
+    border-bottom:1px solid #e0e0e0;
+    vertical-align:top;
+    line-height:1.35;
+}
+
+.status{
+    display:inline-block;
+    color:#21a040;
+    border:1px solid #32b24f;
+    background:#f4fff6;
+    border-radius:4px;
+    padding:4px 9px;
+    font-size:14px;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+.timeline{
+    padding:18px 18px 8px;
+}
+
+.event{
+    display:grid;
+    grid-template-columns:52px 1fr;
+    gap:14px;
+    position:relative;
+    padding-bottom:28px;
+}
+
+.event:not(:last-child)::after{
+    content:"";
+    position:absolute;
+    left:19px;
+    top:42px;
+    bottom:-4px;
+    border-left:3px dotted #d9d9d9;
+}
+
+.event-icon{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#f1f1f1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+}
+
+.purple{
+    color:#5f35e5;
+}
+
+.blue{
+    color:#1aa0b5;
+}
+
+.green{
+    color:#2eb44f;
+}
+
+.event-text{
+    font-size:17px;
+    line-height:1.38;
+}
+
+.event-date{
+    margin-top:7px;
+    font-size:14px;
+    color:#333;
+}
+
+.left-card{
+    position:sticky;
+    top:22px;
+}
+
+.download{
+    margin-top:12px;
+    display:inline-block;
+    color:#0b63ce;
+    text-decoration:none;
+    font-weight:700;
+}
+
+.download:hover{
+    text-decoration:underline;
+}
+
+@media(max-width:950px){
+    .page{
+        grid-template-columns:1fr;
+        margin:28px auto;
+    }
+
+    .left-card{
+        position:relative;
+        top:auto;
+    }
+
+    .pdf-frame{
+        height:520px;
+    }
+
+    .header{
+        padding:0 24px;
+    }
+
+    .logo-text{
+        font-size:20px;
+        letter-spacing:5px;
+    }
+
+    .table{
+        font-size:14px;
+    }
+
+    .table thead{
+        display:none;
+    }
+
+    .table,
+    .table tbody,
+    .table tr,
+    .table td{
+        display:block;
+        width:100%;
+    }
+
+    .table tr{
+        border-bottom:1px solid #ddd;
+        padding:12px 0;
+    }
+
+    .table td{
+        border-bottom:none;
+        padding:6px 16px;
+    }
+
+    .table td::before{
+        content:attr(data-label);
+        display:block;
+        font-weight:700;
+        margin-bottom:3px;
+        color:#333;
+    }
+}
+
+@media(max-width:520px){
+    .header{
+        height:74px;
+        padding:0 18px;
+    }
+
+    .logo-icon{
+        width:30px;
+        height:27px;
+    }
+
+    .logo-text{
+        font-size:18px;
+        letter-spacing:4px;
+    }
+
+    .page{
+        margin:22px auto;
+        padding:0 12px;
+        gap:18px;
+    }
+
+    .card-title{
+        font-size:20px;
+        padding:16px;
+    }
+
+    .pdf-frame{
+        height:480px;
+    }
+
+    .event-text{
+        font-size:16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo-box">
+        <div class="logo-icon"></div>
+        <div class="logo-text">ControlDoc</div>
+    </div>
+</header>
+
+<main class="page">
+
+    <aside>
+        <div class="card left-card">
+            <div class="card-title">
+                <div class="card-title-left">
+                    <span class="icon-title">▦</span>
+                    <span>Validación de Documento</span>
+                </div>
+            </div>
+
+            <div class="info-block">
+                <div class="info-label">Nombre del documento:</div>
+                <div class="info-value">Contrato de Trabajo</div>
+                <div class="badge">〰Firmado</div>
+            </div>
+
+            <div class="info-block">
+                <div class="info-label">Fecha de creación:</div>
+                <div class="info-value">02 de junio de 2025 13:44</div>
+            </div>
+
+            <div class="info-block">
+                <div class="info-label">Creado por:</div>
+                <div class="info-value">
+                    maria.fernandez@coasinlogicalis.com<br>
+                    <strong>COASIN CHILE SA</strong>
+                </div>
+                <a class="download" href="/contratos/ControlDoc_ExiB4ym.pdf" target="_blank">
+                    Descargar documento
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <section>
+
+        <div class="card pdf-card">
+            <div class="card-title">
+                <div class="card-title-left">
+                    <span class="icon-title">▣</span>
+                    <span>Previsualización</span>
+                </div>
+                <span class="chevron">⌄</span>
+            </div>
+
+            <iframe class="pdf-frame" src="/contratos/ControlDoc_ExiB4ym.pdf"></iframe>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <div class="card-title-left">
+                    <span class="icon-title">〰</span>
+                    <span>Firmantes/Visadores</span>
+                </div>
+                <span class="chevron">⌄</span>
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo electrónico</th>
+                        <th>Rol</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Nombre">Alexis jesus<br>Moncada Campos</td>
+                        <td data-label="Correo electrónico">moncadacamposalexis@gmail.com</td>
+                        <td data-label="Rol">Trabajador</td>
+                        <td data-label="Estado"><span class="status">✓ Firmado</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Nombre">Natan Esteban<br>Cisternas Olivares</td>
+                        <td data-label="Correo electrónico">natan.cisternas@coasinlogicalis.com</td>
+                        <td data-label="Rol">Gerente de Operaciones de Recursos Humanos Región Andina</td>
+                        <td data-label="Estado"><span class="status">✓ Firmado</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <div class="card-title">
+                <div class="card-title-left">
+                    <span class="icon-title">〰</span>
+                    <span>Trazabilidad</span>
+                </div>
+                <span class="chevron">⌄</span>
+            </div>
+
+            <div class="timeline">
+
+                <div class="event">
+                    <div class="event-icon purple">✉</div>
+                    <div>
+                        <div class="event-text">
+                            Notificación de firma enviada a moncadacamposalexis@gmail.com por maria.fernandez@coasinlogicalis.com
+                        </div>
+                        <div class="event-date">▣ 02 de junio de 2025 13:44</div>
+                    </div>
+                </div>
+
+                <div class="event">
+                    <div class="event-icon purple">✉</div>
+                    <div>
+                        <div class="event-text">
+                            Notificación de firma enviada a natan.cisternas@coasinlogicalis.com por maria.fernandez@coasinlogicalis.com
+                        </div>
+                        <div class="event-date">▣ 02 de junio de 2025 13:44</div>
+                    </div>
+                </div>
+
+                <div class="event">
+                    <div class="event-icon blue">▤</div>
+                    <div>
+                        <div class="event-text">
+                            Documento creado por maria.fernandez@coasinlogicalis.com
+                        </div>
+                        <div class="event-date">▣ 02 de junio de 2025 13:44</div>
+                    </div>
+                </div>
+
+                <div class="event">
+                    <div class="event-icon green">〰</div>
+                    <div>
+                        <div class="event-text">
+                            Documento firmado por moncadacamposalexis@gmail.com
+                        </div>
+                        <div class="event-date">▣ 02 de junio de 2025 14:59</div>
+                    </div>
+                </div>
+
+                <div class="event">
+                    <div class="event-icon green">〰</div>
+                    <div>
+                        <div class="event-text">
+                            Documento firmado por natan.cisternas@coasinlogicalis.com
+                        </div>
+                        <div class="event-date">▣ 02 de junio de 2025 17:06</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+</html>
