@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ControlDoc - Validación de Documento</title>
+
+<title>Gestor Documental | Demo</title>
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23272727'/%3E%3Crect x='14' y='18' width='36' height='30' rx='5' fill='%2324c7ef'/%3E%3Crect x='20' y='12' width='30' height='30' rx='5' fill='%237a4df3' opacity='.85'/%3E%3Cpath d='M20 36h24' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
 
 <style>
 *{box-sizing:border-box;}
@@ -28,19 +31,34 @@ body{
     display:flex;
     align-items:center;
     gap:12px;
+    text-decoration:none;
+    color:white;
 }
 
 .logo-icon{
     width:34px;
-    height:30px;
-    border-radius:5px;
+    height:34px;
+    border-radius:7px;
     background:linear-gradient(135deg,#24c7ef,#7a4df3);
+    position:relative;
+}
+
+.logo-icon::before{
+    content:"";
+    position:absolute;
+    width:22px;
+    height:18px;
+    left:6px;
+    top:-6px;
+    border-radius:4px;
+    background:#e8f7ff;
+    opacity:.9;
 }
 
 .logo-text{
     font-size:22px;
     letter-spacing:7px;
-    font-weight:400;
+    font-weight:300;
 }
 
 .page{
@@ -77,22 +95,16 @@ body{
     gap:10px;
 }
 
-.icon-title{
-    font-size:20px;
-}
+.icon-title{font-size:20px;}
 
 .chevron{
     font-size:22px;
     transition:.2s;
 }
 
-.card-content{
-    display:block;
-}
+.card-content{display:block;}
 
-.card.collapsed .card-content{
-    display:none;
-}
+.card.collapsed .card-content{display:none;}
 
 .card.collapsed .chevron{
     transform:rotate(-90deg);
@@ -238,22 +250,16 @@ body{
         top:auto;
     }
 
-    .pdf-frame{
-        height:520px;
-    }
+    .pdf-frame{height:520px;}
 
-    .header{
-        padding:0 24px;
-    }
+    .header{padding:0 24px;}
 
     .logo-text{
         font-size:20px;
         letter-spacing:5px;
     }
 
-    .table thead{
-        display:none;
-    }
+    .table thead{display:none;}
 
     .table,
     .table tbody,
@@ -303,13 +309,9 @@ body{
         padding:16px;
     }
 
-    .pdf-frame{
-        height:480px;
-    }
+    .pdf-frame{height:480px;}
 
-    .event-text{
-        font-size:16px;
-    }
+    .event-text{font-size:16px;}
 }
 </style>
 </head>
@@ -317,10 +319,10 @@ body{
 <body>
 
 <header class="header">
-    <div class="logo-box">
+    <a class="logo-box" href="/">
         <div class="logo-icon"></div>
-        <div class="logo-text">ControlDoc</div>
-    </div>
+        <div class="logo-text">DocControl</div>
+    </a>
 </header>
 
 <main class="page">
