@@ -3,12 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Gestor Documental | DocControl</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23272727'/%3E%3Crect x='14' y='18' width='36' height='30' rx='5' fill='%2324c7ef'/%3E%3Crect x='20' y='12' width='30' height='30' rx='5' fill='%237a4df3' opacity='.85'/%3E%3Cpath d='M20 36h24' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
 
 <style>
 *{box-sizing:border-box;}
@@ -54,7 +51,6 @@ body{
     top:-6px;
     border-radius:4px;
     background:#e8f7ff;
-    opacity:.9;
 }
 
 .logo-text{
@@ -64,12 +60,12 @@ body{
 }
 
 .page{
-    max-width:1200px;
-    margin:44px auto;
+    max-width:1380px;
+    margin:42px auto;
     display:grid;
-    grid-template-columns:380px 1fr;
+    grid-template-columns:360px 1fr;
     gap:24px;
-    padding:0 18px;
+    padding:0 14px;
 }
 
 .card{
@@ -99,7 +95,6 @@ body{
 
 .icon-title{
     font-size:17px;
-    color:#111827;
     width:18px;
     text-align:center;
 }
@@ -110,49 +105,48 @@ body{
 }
 
 .card-content{display:block;}
-
 .card.collapsed .card-content{display:none;}
-
-.card.collapsed .chevron{
-    transform:rotate(-90deg);
-}
+.card.collapsed .chevron{transform:rotate(-90deg);}
 
 .info-block{
     padding:14px 18px;
     border-bottom:1px solid #e0e0e0;
 }
 
-.info-block:last-child{
-    border-bottom:none;
-}
+.info-block:last-child{border-bottom:none;}
 
 .info-label{
     font-weight:700;
     font-size:15px;
-    margin-bottom:6px;
+    margin-bottom:7px;
 }
 
 .info-value{
     font-size:15px;
-    line-height:1.35;
+    line-height:1.4;
+}
+
+.status-text{
+    color:#168f2e;
+    font-weight:700;
 }
 
 .badge{
     display:inline-flex;
     align-items:center;
-    gap:5px;
+    gap:6px;
     margin-top:8px;
     color:#25a342;
     border:1.5px solid #58bd68;
-    border-radius:20px;
-    padding:2px 11px;
+    border-radius:5px;
+    padding:5px 12px;
     font-weight:700;
-    font-size:12px;
+    font-size:13px;
+    background:#f4fff6;
 }
 
 .document-code{
-    margin-top:10px;
-    font-size:13px;
+    font-size:14px;
     color:#555;
 }
 
@@ -190,28 +184,28 @@ body{
 }
 
 .table td{
-    padding:14px 16px;
+    padding:15px 16px;
     border-bottom:1px solid #e0e0e0;
     vertical-align:top;
-    line-height:1.4;
+    line-height:1.45;
 }
 
 .status{
     display:inline-flex;
     align-items:center;
-    gap:5px;
+    gap:6px;
     color:#21a040;
     border:1px solid #32b24f;
     background:#f4fff6;
     border-radius:4px;
-    padding:4px 9px;
+    padding:5px 12px;
     font-size:13px;
     font-weight:700;
     white-space:nowrap;
 }
 
 .timeline{
-    padding:18px 18px 8px;
+    padding:14px 18px 8px;
 }
 
 .event{
@@ -219,7 +213,7 @@ body{
     grid-template-columns:52px 1fr;
     gap:14px;
     position:relative;
-    padding-bottom:25px;
+    padding-bottom:16px;
 }
 
 .event:not(:last-child)::after{
@@ -245,16 +239,20 @@ body{
 }
 
 .purple{color:#5f35e5;}
-.blue{color:#1aa0b5;}
-.green{color:#2eb44f;}
+.blue{color:#0ea5b7;}
+.green{color:#22a447;}
+.orange{color:#ff6b35;}
+.shield{color:#2563eb;}
+.globe{color:#0ea5e9;}
 
 .event-text{
-    font-size:15px;
-    line-height:1.5;
+    font-size:14.5px;
+    line-height:1.45;
+    font-weight:600;
 }
 
 .event-date{
-    margin-top:6px;
+    margin-top:4px;
     font-size:13px;
     color:#333;
     display:flex;
@@ -270,7 +268,7 @@ body{
 @media(max-width:950px){
     .page{
         grid-template-columns:1fr;
-        margin:28px auto;
+        margin:26px auto;
     }
 
     .left-card{
@@ -278,22 +276,16 @@ body{
         top:auto;
     }
 
-    .pdf-frame{
-        height:520px;
-    }
+    .pdf-frame{height:520px;}
 
-    .header{
-        padding:0 24px;
-    }
+    .header{padding:0 24px;}
 
     .logo-text{
         font-size:20px;
         letter-spacing:5px;
     }
 
-    .table thead{
-        display:none;
-    }
+    .table thead{display:none;}
 
     .table,
     .table tbody,
@@ -323,7 +315,7 @@ body{
 
 @media(max-width:520px){
     .header{
-        height:74px;
+        height:72px;
         padding:0 18px;
     }
 
@@ -333,23 +325,17 @@ body{
     }
 
     .page{
-        margin:22px auto;
-        padding:0 12px;
+        margin:20px auto;
+        padding:0 10px;
         gap:18px;
     }
 
     .card-title{
-        font-size:18px;
+        font-size:17px;
         padding:15px 16px;
     }
 
-    .pdf-frame{
-        height:470px;
-    }
-
-    .event-text{
-        font-size:15px;
-    }
+    .pdf-frame{height:460px;}
 
     .event{
         grid-template-columns:46px 1fr;
@@ -362,9 +348,7 @@ body{
         font-size:16px;
     }
 
-    .event:not(:last-child)::after{
-        left:19px;
-    }
+    .event:not(:last-child)::after{left:19px;}
 }
 </style>
 </head>
@@ -390,16 +374,36 @@ body{
             </div>
 
             <div class="card-content">
+
                 <div class="info-block">
                     <div class="info-label">Nombre del documento:</div>
                     <div class="info-value">Contrato de Trabajo</div>
-                    <div class="badge"><i class="fa-solid fa-signature"></i> Firmado</div>
-                    <div class="document-code">N° documento: <strong>EpiB5zm</strong></div>
+                    <div class="badge"><i class="fa-solid fa-signature"></i> Firmado y Validado</div>
                 </div>
 
                 <div class="info-block">
-                    <div class="info-label">Fecha de creación:</div>
-                    <div class="info-value">15 de julio de 2021 13:44</div>
+                    <div class="info-label">N° documento:</div>
+                    <div class="document-code"><strong>EpiB5zm</strong></div>
+                </div>
+
+                <div class="info-block">
+                    <div class="info-label">Estado:</div>
+                    <div class="info-value status-text">Vigente y Validado Digitalmente</div>
+                </div>
+
+                <div class="info-block">
+                    <div class="info-label">Fecha de creación / Firma original:</div>
+                    <div class="info-value">15 de julio de 2019 13:44</div>
+                </div>
+
+                <div class="info-block">
+                    <div class="info-label">Última actualización:</div>
+                    <div class="info-value">08 de junio de 2026 17:20</div>
+                </div>
+
+                <div class="info-block">
+                    <div class="info-label">Código de verificación (QR):</div>
+                    <div class="info-value"><strong>EpiB5zm</strong></div>
                 </div>
 
                 <div class="info-block">
@@ -410,19 +414,20 @@ body{
                     </div>
 
                     <a class="download"
-                       href="/contratos/firma_Contrato%20CristhianZarate_certified1.pdf"
+                       href="/contratos/firma_Contrato%20CristhianZarate_certified.pdf"
                        download="firma_Contrato CristhianZarate_certified.pdf"
                        target="_blank">
                         Descargar documento
                     </a>
                 </div>
+
             </div>
         </div>
     </aside>
 
     <section>
 
-        <div class="card">
+        <div class="card collapsed">
             <div class="card-title" onclick="toggleCard(this)">
                 <div class="card-title-left">
                     <i class="fa-regular fa-file-lines icon-title"></i>
@@ -442,7 +447,7 @@ body{
         <div class="card">
             <div class="card-title" onclick="toggleCard(this)">
                 <div class="card-title-left">
-                    <i class="fa-solid fa-signature icon-title"></i>
+                    <i class="fa-solid fa-users-line icon-title"></i>
                     <span>Firmantes/Visadores</span>
                 </div>
                 <i class="fa-solid fa-chevron-down chevron"></i>
@@ -456,20 +461,30 @@ body{
                             <th>Correo electrónico</th>
                             <th>Rol</th>
                             <th>Estado</th>
+                            <th>Fecha de firma</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td data-label="Nombre">Cristhian Duber<br>Zarate Timoteo</td>
+                            <td data-label="Nombre">Cristhian<br>Duber<br>Zarate<br>Timoteo</td>
                             <td data-label="Correo electrónico">cdzt84@gmail.com</td>
                             <td data-label="Rol">Trabajador</td>
                             <td data-label="Estado"><span class="status"><i class="fa-solid fa-check"></i> Firmado</span></td>
+                            <td data-label="Fecha de firma">15/07/2019 14:59<br>(Firma original)</td>
                         </tr>
                         <tr>
-                            <td data-label="Nombre">Natan Esteban<br>Cisternas Olivares</td>
+                            <td data-label="Nombre">Natan<br>Esteban<br>Cisternas<br>Olivares</td>
                             <td data-label="Correo electrónico">ncisternas@coasinlogicalis.cl</td>
                             <td data-label="Rol">Gerente de Operaciones de Recursos Humanos Región Andina</td>
                             <td data-label="Estado"><span class="status"><i class="fa-solid fa-check"></i> Firmado</span></td>
+                            <td data-label="Fecha de firma">08/06/2026 16:35<br>(Actualización)</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Nombre">Francisca<br>Ciudad<br>Carmona</td>
+                            <td data-label="Correo electrónico">fciudad@coasinlogicalis.cl</td>
+                            <td data-label="Rol">Representante Legal</td>
+                            <td data-label="Estado"><span class="status"><i class="fa-solid fa-check"></i> Firmado</span></td>
+                            <td data-label="Fecha de firma">08/06/2026 16:48<br>(Actualización)</td>
                         </tr>
                     </tbody>
                 </table>
@@ -489,77 +504,90 @@ body{
                 <div class="timeline">
 
                     <div class="event">
-                        <div class="event-icon purple">
-                            <i class="fa-regular fa-envelope"></i>
-                        </div>
+                        <div class="event-icon purple"><i class="fa-regular fa-envelope"></i></div>
                         <div>
-                            <div class="event-text">
-                                Notificación de firma enviada a cdzt84@gmail.com por mfernandez@coasinlogicalis.cl
-                            </div>
-                            <div class="event-date">
-                                <i class="fa-regular fa-calendar"></i>
-                                15 de julio de 2021 13:44
-                            </div>
+                            <div class="event-text">Documentación enviada para firma al trabajador cdzt84@gmail.com</div>
+                            <div class="event-date"><i class="fa-regular fa-calendar"></i> 15 de julio de 2019 13:44</div>
                         </div>
                     </div>
 
                     <div class="event">
-                        <div class="event-icon purple">
-                            <i class="fa-regular fa-envelope"></i>
-                        </div>
+                        <div class="event-icon green"><i class="fa-solid fa-signature"></i></div>
                         <div>
-                            <div class="event-text">
-                                Notificación de firma enviada a ncisternas@coasinlogicalis.cl por mfernandez@coasinlogicalis.cl
-                            </div>
-                            <div class="event-date">
-                                <i class="fa-regular fa-calendar"></i>
-                                15 de julio de 2021 13:44
-                            </div>
+                            <div class="event-text">Documento firmado por cdzt84@gmail.com (Trabajador)</div>
+                            <div class="event-date"><i class="fa-regular fa-calendar"></i> 15 de julio de 2019 14:59</div>
                         </div>
                     </div>
 
                     <div class="event">
-                        <div class="event-icon blue">
-                            <i class="fa-regular fa-file-lines"></i>
-                        </div>
+                        <div class="event-icon blue"><i class="fa-regular fa-file-lines"></i></div>
                         <div>
-                            <div class="event-text">
-                                Documento creado por mfernandez@coasinlogicalis.cl
-                            </div>
-                            <div class="event-date">
-                                <i class="fa-regular fa-calendar"></i>
-                                15 de julio de 2021 13:44
-                            </div>
+                            <div class="event-text">Documento creado por mfernandez@coasinlogicalis.cl</div>
+                            <div class="event-date"><i class="fa-regular fa-calendar"></i> 15 de julio de 2019 13:44</div>
                         </div>
                     </div>
 
                     <div class="event">
-                        <div class="event-icon green">
-                            <i class="fa-solid fa-signature"></i>
-                        </div>
+                        <div class="event-icon orange"><i class="fa-solid fa-circle-exclamation"></i></div>
                         <div>
-                            <div class="event-text">
-                                Documento firmado por cdzt84@gmail.com
-                            </div>
-                            <div class="event-date">
-                                <i class="fa-regular fa-calendar"></i>
-                                15 de julio de 2021 14:59
-                            </div>
+                            <div class="event-text">Solicitud de regularización: se requiere firma del representante legal para validación ante terceros</div>
+                            <div class="event-date"><i class="fa-regular fa-calendar"></i> 08 de junio de 2026 15:10</div>
                         </div>
                     </div>
 
                     <div class="event">
-                        <div class="event-icon green">
-                            <i class="fa-solid fa-signature"></i>
-                        </div>
+                        <div class="event-icon blue"><i class="fa-solid fa-users-line"></i></div>
                         <div>
-                            <div class="event-text">
-                                Documento firmado por ncisternas@coasinlogicalis.cl
-                            </div>
-                            <div class="event-date">
-                                <i class="fa-regular fa-calendar"></i>
-                                15 de julio de 2021 17:06
-                            </div>
+                            <div class="event-text">Caso recibido y revisado por ncisternas@coasinlogicalis.cl (Gerente de RRHH)</div>
+                            <div class="event-date"><i class="fa-regular fa-calendar"></i> 08 de junio de 2026 15:28</div>
+                        </div>
+                    </div>
+
+                    <div class="event">
+                        <div class="event-icon green"><i class="fa-solid fa-signature"></i></div>
+                        <div>
+                            <div class="event-text">Documento firmado por ncisternas@coasinlogicalis.cl (Gerente de RRHH)</div>
+                            <div class="event-date"><i class="fa-regular fa-calendar"></i> 08 de junio de 2026 16:35</div>
+                        </div>
+                    </div>
+
+                    <div class="event">
+                        <div class="event-icon green"><i class="fa-solid fa-signature"></i></div>
+                        <div>
+                            <div class="event-text">Documento firmado por fciudad@coasinlogicalis.cl (Representante Legal)</div>
+                            <div class="event-date"><i class="fa-regular fa-calendar"></i> 08 de junio de 2026 16:48</div>
+                        </div>
+                    </div>
+
+                    <div class="event">
+                        <div class="event-icon shield"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div>
+                            <div class="event-text">Documento validado en DocControl - Validación criptográfica completada</div>
+                            <div class="event-date"><i class="fa-regular fa-calendar"></i> 08 de junio de 2026 17:05</div>
+                        </div>
+                    </div>
+
+                    <div class="event">
+                        <div class="event-icon blue"><i class="fa-solid fa-qrcode"></i></div>
+                        <div>
+                            <div class="event-text">Código QR generado para verificación pública (Código: EpiB5zm)</div>
+                            <div class="event-date"><i class="fa-regular fa-calendar"></i> 08 de junio de 2026 17:10</div>
+                        </div>
+                    </div>
+
+                    <div class="event">
+                        <div class="event-icon globe"><i class="fa-solid fa-globe"></i></div>
+                        <div>
+                            <div class="event-text">Documento publicado en el portal de validación DocControl</div>
+                            <div class="event-date"><i class="fa-regular fa-calendar"></i> 08 de junio de 2026 17:15</div>
+                        </div>
+                    </div>
+
+                    <div class="event">
+                        <div class="event-icon green"><i class="fa-solid fa-check"></i></div>
+                        <div>
+                            <div class="event-text">Documento disponible para verificación por terceros</div>
+                            <div class="event-date"><i class="fa-regular fa-calendar"></i> 08 de junio de 2026 17:20</div>
                         </div>
                     </div>
 
